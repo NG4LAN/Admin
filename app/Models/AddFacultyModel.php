@@ -1,0 +1,83 @@
+<?php
+
+namespace app\Models;
+
+use config\DBConnection;
+use PDO;
+
+class AddFacultyModel
+{
+    private $db;
+
+    public function __construct(DBConnection $db)
+    {
+        $this->db = $db->getConnection();
+    }
+
+    // Method to insert a new faculty record
+    public function insertFaculty($firstName, $lastName, $password, $gender, $email, $idNumber)
+    {
+        $stmt = $this->db->prepare(
+            "INSERT INTO faculty (first_name, last_name, password, gender, email, id_number) 
+             VALUES (:first_name, :last_name, :password, :gender, :email, :id_number)"
+        );
+        $stmt->bindParam(':first_name', $firstName, PDO::PARAM_STR);
+        $stmt->bindParam(':last_name', $lastName, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':gender', $gender, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':id_number', $idNumber, PDO::PARAM_STR);
+        return $stmt->execute();
+    }
+
+
+
+
+    // Method to fetch all faculties
+    public function getAllFaculty()
+    {
+        $stmt = $this->db->query("SELECT * FROM faculty ORDER BY id DESC");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Method to get faculty by ID
+    public function getFacultyById($id)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM faculty WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);  // Returns the faculty's data as an associative array
+    }
+
+
+
+
+    // Method to update faculty details
+    public function updateFaculty($id, $firstName, $lastName, $password, $gender, $email, $idNumber)
+    {
+        $stmt = $this->db->prepare(
+            "UPDATE faculty 
+             SET first_name = :first_name, 
+                 last_name = :last_name, 
+                 password = :password, 
+                 gender = :gender, 
+                 email = :email, 
+                 id_number = :id_number 
+             WHERE id = :id"
+        );
+
+        $stmt->bindParam(':first_name', $firstName, PDO::PARAM_STR);
+        $stmt->bindParam(':last_name', $lastName, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':gender', $gender, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':id_number', $idNumber, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+   
+        
+        
+    }
+    
+}

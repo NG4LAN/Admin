@@ -1,0 +1,99 @@
+<?php
+
+namespace app\Controllers;
+
+use config\DBConnection;
+use app\Models\AddFacultyModel;
+
+class AddFacultyController
+{
+    private $AddFacultyModel;
+
+    public function __construct()
+    {
+        $db = new DBConnection();
+        $this->AddFacultyModel = new AddFacultyModel($db);
+    }
+
+    // Add new faculty
+    public function addFaculty()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $firstName = $_POST['first_name'] ?? '';
+            $lastName  = $_POST['last_name'] ?? '';
+            $password  = $_POST['password'] ?? '';
+            $gender    = $_POST['gender'] ?? '';
+            $email     = $_POST['email'] ?? '';
+            $idNumber  = $_POST['id_number'] ?? '';
+
+            // Validate required fields
+            if (empty($firstName) || empty($lastName) || empty($password) || empty($gender) || empty($email) || empty($idNumber)) {
+                return ["success" => false, "message" => "All fields are required."];
+            }
+
+            // Secure password
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            // Insert the faculty into the database
+            $result = $this->AddFacultyModel->insertFaculty($firstName, $lastName, $hashedPassword, $gender, $email, $idNumber);
+
+            if ($result) {
+                header("Location: /ViewFaculty");
+                exit;
+            }
+
+            echo "Error adding faculty.";
+        }
+    }
+
+    // Display list of all faculties
+    public function readFaculty()
+    {
+        $faculties = $this->AddFacultyModel->getAllFaculty();
+        echo $GLOBALS['templates']->render('ViewFaculty', ['faculties' => $faculties]);
+    }
+
+
+
+
+
+
+    // Update faculty information
+ // Show update form
+    public function showUpdateForm($id)
+    {
+        $faculty = $this->AddFacultyModel->getFacultyById($id);
+        echo $GLOBALS['templates']->render('UpdateFacultyView', ['faculty' => $faculty]);
+    }
+
+// Handle update POST
+    public function updateFaculty($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $firstName = $_POST['first_name'] ?? '';
+            $lastName  = $_POST['last_name'] ?? '';
+            $password  = $_POST['password'] ?? '';
+            $gender    = $_POST['gender'] ?? '';
+            $email     = $_POST['email'] ?? '';
+            $idNumber  = $_POST['id_number'] ?? '';
+
+            // Keep old password if blank
+            $faculty = $this->AddFacultyModel->getFacultyById($id);
+            $hashedPassword = !empty($password) 
+                ? password_hash($password, PASSWORD_DEFAULT) 
+                : $faculty['password'];
+
+            $result = $this->AddFacultyModel->updateFaculty(
+                $id, $firstName, $lastName, $hashedPassword, $gender, $email, $idNumber
+            );
+
+            if ($result) {
+                header("Location: /ViewFaculty");
+                exit;
+            }
+
+            echo "Error updating faculty.";
+        }
+    }
+
+}
