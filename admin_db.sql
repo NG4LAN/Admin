@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2025 at 07:49 AM
+-- Generation Time: Oct 06, 2025 at 07:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -69,6 +69,29 @@ INSERT INTO `faculty` (`id`, `first_name`, `last_name`, `password`, `gender`, `e
 (14, 'long', 'rams', '$2y$10$gy7', 'Male', 'long@gmail.com', 'c23-0001', '2025-10-04 14:44:05'),
 (15, 'q', 'w', '$2y$10$6FF', 'Male', 'qw@gmail.com', 'c23-0002', '2025-10-04 15:57:22');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `id` int(11) NOT NULL,
+  `subject_code` varchar(50) NOT NULL,
+  `subject_name` varchar(255) NOT NULL,
+  `semester` enum('1st Semester','2nd Semester') NOT NULL,
+  `credit_units` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `subject_code`, `subject_name`, `semester`, `credit_units`) VALUES
+(1, 'it101', 'math', '1st Semester', 0),
+(3, 'it102', 'english', '1st Semester', 0),
+(4, 'it202', 'Math1', '2nd Semester', 3);
+
 --
 -- Indexes for dumped tables
 --
@@ -89,6 +112,13 @@ ALTER TABLE `faculty`
   ADD UNIQUE KEY `id_number` (`id_number`);
 
 --
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `subject_code` (`subject_code`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -103,6 +133,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `faculty`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
