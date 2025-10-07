@@ -4,17 +4,14 @@ $this->start('mainContent');
 $this->insert('Errors/Toasts');
 ?>
 
-
-
-
-
-
+<!-- Add your content here to be displayed in the browser -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Manage Faculty</title>
+    <title>Manage Subject - CKC Information Technology</title>
+    <link rel="icon" href="logo.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap + Icons -->
@@ -31,7 +28,6 @@ $this->insert('Errors/Toasts');
             min-height: 100vh;
         }
 
-        /* Glass Background Overlay */
         body::before {
             content: "";
             position: fixed;
@@ -41,7 +37,6 @@ $this->insert('Errors/Toasts');
             z-index: -1;
         }
 
-        /* Navbar */
         .navbar-blur {
             background: rgba(0, 25, 51, 0.8);
             backdrop-filter: blur(10px);
@@ -53,7 +48,12 @@ $this->insert('Errors/Toasts');
             font-weight: 600;
         }
 
-        /* Sidebar */
+        .navbar-text {
+            color: #aee2ff !important;
+            font-weight: 500;
+            text-shadow: 0 0 6px rgba(174, 226, 255, 0.6);
+        }
+
         .sidebar {
             background: rgba(0, 32, 64, 0.8);
             backdrop-filter: blur(12px);
@@ -83,7 +83,6 @@ $this->insert('Errors/Toasts');
             color: #fff;
         }
 
-        /* Main content */
         .main-content {
             margin-left: 240px;
             padding: 80px 30px 40px;
@@ -105,7 +104,6 @@ $this->insert('Errors/Toasts');
             color: #aad9f7;
         }
 
-
         .table-container {
             background: rgba(255, 255, 255, 0.02);
             /* faint frost */
@@ -117,30 +115,32 @@ $this->insert('Errors/Toasts');
             transition: 0.3s;
         }
 
-
-
-
-        .table-container:hover {
-            box-shadow: 0 0 35px rgba(74, 200, 224, 0.4);
-        }
-
-
-        /* Remove Bootstrap's white table background */
         .table {
             background-color: transparent !important;
         }
 
-        /* Optional: make the header frosted glass too */
-        .table thead {
-            background: rgba(74, 200, 224, 0.15);
-            /* subtle blue tint */
-            color: #ffffff;
-            backdrop-filter: blur(10px);
+
+        /* Make all table cells transparent */
+        .table th,
+        .table td {
+            background-color: transparent !important;
+            color: #ffffff !important;
         }
 
-        /* Optional: give rows a soft highlight when hovering */
+        /* Remove white border lines */
+        .table-bordered th,
+        .table-bordered td {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Add a soft glowing divider line between rows */
+        .table tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Hover effect for better visibility */
         .table tbody tr:hover {
-            background: rgba(74, 200, 224, 0.08);
+            background: rgba(74, 200, 224, 0.08) !important;
         }
 
         .btn-edit {
@@ -184,58 +184,86 @@ $this->insert('Errors/Toasts');
 
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-blur fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-building"></i> Christ the King College
+                <i class="bi bi-journal-text"></i>
+                Christ the King College
             </a>
             <div class="ms-auto d-flex align-items-center gap-3">
                 <span class="navbar-text d-none d-md-block">jatis@ckcgingoog.edu.ph</span>
-                <i class="bi bi-bell text-light fs-5"></i>
-                <img src="/img/juswa.jpg" class="rounded-circle" alt="Profile" width="40" height="40">
+                <div class="dropdown">
+                    <a href="#" class="text-light position-relative" id="notifDropdown" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">2</span>
+                    </a>
+                </div>
+                <img src="/img/juswa.jpg" class="rounded-circle" width="36" height="36" alt="Prof. Atis">
             </div>
         </div>
     </nav>
 
-    <!-- Sidebar -->
-    <nav class="sidebar">
-        <a href="index.php"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+    <nav class="sidebar d-none d-lg-flex flex-column">
+        <li class="nav-item mb-2">
+            <a href="Index.php" class="nav-link text-white">
+                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+            </a>
+        </li>
+        <li class="nav-item mb-2">
+            <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#facultyMenu">
+                <span><i class="bi bi-person-badge me-2"></i>Faculty</span>
+                <i class="bi bi-caret-down-fill small"></i>
+            </a>
+            <div class="collapse ps-3" id="facultyMenu">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="addFaculty.php" class="nav-link text-white-50">
+                            <i class="bi bi-person-plus me-2"></i> Add Faculty
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Manage_Faculty.php" class="nav-link text-white-50">
+                            <i class="bi bi-people me-2"></i> Manage Faculty
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-        <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#teacherMenu" role="button" aria-expanded="true" aria-controls="teacherMenu">
-            <span><i class="bi bi-person-badge me-2"></i>Faculty</span>
-            <i class="bi bi-caret-down-fill small"></i>
-        </a>
-        <div class="collapse show ps-3" id="teacherMenu">
-            <ul class="nav flex-column">
-                <li><a href="add-faculty.php" class="nav-link text-white-50"><i class="bi bi-person-plus me-2"></i>Add Faculty</a></li>
-                <li><a href="manage-faculty.php" class="nav-link text-white-50 active"><i class="bi bi-people me-2"></i>Manage Faculty</a></li>
-            </ul>
-        </div>
-
-        <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#subjectMenu" role="button" aria-expanded="false" aria-controls="subjectMenu">
-            <span><i class="bi bi-journal-text me-2"></i>Subject</span>
-            <i class="bi bi-caret-down-fill small"></i>
-        </a>
-        <div class="collapse ps-3" id="subjectMenu">
-            <ul class="nav flex-column">
-                <li><a href="add-subject.php" class="nav-link text-white-50"><i class="bi bi-plus-circle me-2"></i>Add Subject</a></li>
-                <li><a href="manage-subject.php" class="nav-link text-white-50"><i class="bi bi-list-check me-2"></i>Manage Subject</a></li>
-            </ul>
-        </div>
+        <li class="nav-item mb-2">
+            <a class="nav-link active d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#subjectMenu">
+                <span><i class="bi bi-journal-text me-2"></i> Subject</span>
+                <i class="bi bi-caret-down-fill small"></i>
+            </a>
+            <div class="collapse show ps-3" id="subjectMenu">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="addSubject.php" class="nav-link text-white-50">
+                            <i class="bi bi-plus-circle me-2"></i> Add Subject
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Manage_Subject.php" class="nav-link text-white">
+                            <i class="bi bi-list-check me-2"></i> Manage Subject
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
         <li class="nav-item mt-3">
-            <a href="logout.php" class="nav-link text-danger"><i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+            <a href="logout.php" class="nav-link text-danger">
+                <i class="bi bi-box-arrow-right me-2"></i> Logout
+            </a>
         </li>
     </nav>
 
-    <!-- Main -->
     <main class="main-content">
         <div class="container">
-            <h2>Manage Faculty</h2>
+            <h2>Manage Subject</h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active text-light">Dashboard / Manage Faculty</li>
+                    <li class="breadcrumb-item active text-light">Dashboard / Manage Subject</li>
                 </ol>
             </nav>
 
@@ -244,26 +272,23 @@ $this->insert('Errors/Toasts');
                     <table class="table table-hover align-middle text-center">
                         <thead>
                             <tr>
-                                <th>F.No</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Faculty ID</th>
-                                <th>Mobile Number</th>
-                                <th>Email</th>
+                                <th>S.No</th>
+                                <th>Subject Code</th>
+                                <th>Subject Name</th>
+                                <th>Semester</th>
+                                <th>Units</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            <?php foreach ($faculties as $faculty): ?>
+                            <?php foreach ($subjects as $s): ?>
                                 <tr>
-                                    <td><?= htmlspecialchars($faculty['id']) ?></td>
-                                    <td><?= htmlspecialchars($faculty['id_number']) ?></td>
-                                    <td><?= htmlspecialchars($faculty['first_name']) ?></td>
-                                    <td><?= htmlspecialchars($faculty['last_name']) ?></td>
-                                    <td><?= htmlspecialchars($faculty['gender']) ?></td>
-                                    <td><?= htmlspecialchars($faculty['email']) ?></td>
-                                    <td><a href="/ViewFaculty/UpdateFaculty/<?= htmlspecialchars($faculty['id_number']) ?>">asd</a></td>
+                                    <td><?= $s['id']; ?></td>
+                                    <td><?= htmlspecialchars($s['subject_code']); ?></td>
+                                    <td><?= htmlspecialchars($s['subject_name']); ?></td>
+                                    <td><?= htmlspecialchars($s['semester']); ?></td>
+                                    <td><?= htmlspecialchars($s['credit_units']); ?></td>
+                                    <td><a href="/ViewSubjects/UpdateSubjectView/<?= htmlspecialchars($s['id']) ?>"><button class="btn btn-edit">Edit</button></a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -281,7 +306,6 @@ $this->insert('Errors/Toasts');
 </body>
 
 </html>
-
 <?php
 $this->stop();
 ?>

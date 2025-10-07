@@ -59,14 +59,14 @@ class AddFacultyController
 
 
     // Update faculty information
- // Show update form
+    // Show update form
     public function showUpdateForm($id)
     {
         $faculty = $this->AddFacultyModel->getFacultyById($id);
         echo $GLOBALS['templates']->render('UpdateFacultyView', ['faculty' => $faculty]);
     }
 
-// Handle update POST
+    // Handle update POST
     public function updateFaculty($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -79,12 +79,18 @@ class AddFacultyController
 
             // Keep old password if blank
             $faculty = $this->AddFacultyModel->getFacultyById($id);
-            $hashedPassword = !empty($password) 
-                ? password_hash($password, PASSWORD_DEFAULT) 
+            $hashedPassword = !empty($password)
+                ? password_hash($password, PASSWORD_DEFAULT)
                 : $faculty['password'];
 
             $result = $this->AddFacultyModel->updateFaculty(
-                $id, $firstName, $lastName, $hashedPassword, $gender, $email, $idNumber
+                $id,
+                $firstName,
+                $lastName,
+                $hashedPassword,
+                $gender,
+                $email,
+                $idNumber
             );
 
             if ($result) {
@@ -96,4 +102,5 @@ class AddFacultyController
         }
     }
 
+    
 }

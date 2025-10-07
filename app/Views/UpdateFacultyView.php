@@ -18,16 +18,16 @@ $this->insert('Errors/Toasts');
 
     <h2>Update Faculty</h2>
 
-    <form action="/UpdateFaculty/updateFaculty/<?= htmlspecialchars($faculty['id']); ?>" method="POST">
+    <form action="/ViewFaculty/UpdateFaculty/<?= htmlspecialchars($faculty['id']); ?>/Update" method="POST">
 
         <label>First Name:</label>
         <input type="text" name="first_name" value="<?= htmlspecialchars($faculty['first_name']); ?>" required><br>
 
         <label>Last Name:</label>
         <input type="text" name="last_name" value="<?= htmlspecialchars($faculty['last_name']); ?>" required><br>
-
+<!-- 
         <label>Password (leave blank to keep current):</label>
-        <input type="password" name="password"><br>
+        <input type="password" name="password"><br> -->
 
         <label>Gender:</label>
         <select name="gender" required>
@@ -44,9 +44,6 @@ $this->insert('Errors/Toasts');
         <button type="submit">Update Faculty</button>
     </form>
 
-    
-
-    <?php $this->stop(); ?>
 
 </body>
 

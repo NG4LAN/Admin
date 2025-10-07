@@ -43,8 +43,8 @@ class AddFacultyModel
     // Method to get faculty by ID
     public function getFacultyById($id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM faculty WHERE id = :id");
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt = $this->db->prepare("SELECT * FROM faculty WHERE id_number = :id_number");
+        $stmt->bindParam(':id_number', $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);  // Returns the faculty's data as an associative array
     }

@@ -38,15 +38,50 @@ class AddSubjectController
     }
 
 
+// not fixed
 
-
-    public function showForm()
+    public function showSubjectForm($id)
     {
-        \app\Router::render('AddSubjectView');
+        $subjects = $this->AddSubjectModel->getSubjectById($id);
+        echo $GLOBALS['templates']->render('UpdateSubjectView', ['subjects' => $subjects]);
 
 
     }
     
+    public function readSubject()
+    {
+        $subjects = $this->AddSubjectModel->getAllSubject();
+        echo $GLOBALS['templates']->render('ViewSubjects', ['subjects' => $subjects]);
+    }
+
+
+
+
+    // not
+
+    public function updateSubject($id)
+    {
+        $subject_code = $_POST['subject_code'] ?? '';
+        $subject_name = $_POST['subject_name'] ?? '';
+        $semester = $_POST['semester'] ?? '';
+        $credit_units = $_POST['credit_units'] ?? '';
+
+        if (empty($subject_code) || empty($subject_name) || empty($semester) || empty($credit_units)) {
+            return ["success" => false, "message" => "All fields are required."];
+        }
+
+        $result = $this->AddSubjectModel->updateSubject($id, $subject_code, $subject_name, $semester, $credit_units);
+
+        if ($result) {
+            return "Subject updated successfully.";
+        }
+
+        return "Error updating subject.";
+    }
+
+
+   
+
 
     // Add your custom controllers below to handle business logic.
 }

@@ -27,24 +27,38 @@ class Router
 
 
 
-        Router::add('/AddSubjectView', fn() => (new \app\Controllers\AddSubjectController())->showForm());
+        // Router::add('/AddSubjectView', fn() => (new \app\Controllers\AddSubjectController())->showSubjectForm());
         Router::add('/AddSubjectSubmit', fn() => (new \app\Controllers\AddSubjectController())->addSubject(), 'POST');
         Router::add('/ViewFaculty', fn() => (new \app\Controllers\AddFacultyController())->readfaculty());
 
         // Show update form
 
 
+        // Show SUbject form
+        Router::add('/ViewSubjects', fn() => (new \app\Controllers\AddSubjectController())->readSubject());
+
+        Router::add(
+            '/ViewSubjects/UpdateSubjectView/{id}',
+            fn($data) => (new \app\Controllers\AddSubjectController())->showSubjectForm($data['id']),
+            'GET'
+        );
+
+
+
+
         // Show update form (GET)
         // Show the update form (GET)
+
+
         Router::add(
-            '/UpdateFaculty/{faculty}',
+            '/ViewFaculty/UpdateFaculty/{faculty}',
             fn($data) => (new \app\Controllers\AddFacultyController())->showUpdateForm($data['faculty']),
             'GET'
         );
 
         // Handle the form submit (POST)
         Router::add(
-            '/UpdateFaculty/updateFaculty',
+            '/ViewFaculty/UpdateFaculty/{faculty}/Update',
             fn($data) => (new \app\Controllers\AddFacultyController())->updateFaculty($data['faculty']),
             'POST'
         );
