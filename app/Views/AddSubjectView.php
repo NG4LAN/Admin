@@ -13,6 +13,7 @@ $this->insert('Errors/Toasts');
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS and Icons -->
+     <link rel="stylesheet" href="/css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
@@ -35,7 +36,7 @@ $this->insert('Errors/Toasts');
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('bg.jpg') no-repeat center center/cover;
+            background: url('/img/bg.jpg') no-repeat center center/cover;
             filter: blur(10px) brightness(0.6);
             z-index: -1;
         }
@@ -223,63 +224,8 @@ $this->insert('Errors/Toasts');
 
 <body>
 
-    <!-- Top Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-blur fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-building"></i>
-                Christ the King College
-            </a>
 
-            <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
-                <i class="bi bi-list fs-4"></i>
-            </button>
 
-            <div class="ms-auto d-flex align-items-center gap-3">
-                <span class="navbar-text d-none d-md-block">jatis@ckcgingoog.edu.ph</span>
-
-                <div class="dropdown">
-                    <a href="#" class="text-light position-relative" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-bell fs-5"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notifBadge">2</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow-lg p-2" aria-labelledby="notifDropdown" style="min-width: 320px;">
-                        <li class="dropdown-item d-flex justify-content-between align-items-start">
-                            <div>
-                                <small class="fw-bold">Student Application</small><br>
-                                <span>A student wants to join your subject.</span>
-                            </div>
-                            <div class="ms-2 d-flex gap-1">
-                                <button class="btn btn-sm btn-success btn-confirm">Confirm</button>
-                                <button class="btn btn-sm btn-danger btn-delete">Delete</button>
-                            </div>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li class="dropdown-item d-flex justify-content-between align-items-start">
-                            <div>
-                                <small class="fw-bold">Admin Update</small><br>
-                                <span>Admin confirmed you in the subject.</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <img src="/img/juswa.jpg" class="profile-pic" alt="Prof. Atis" />
-            </div>
-        </div>
-    </nav>
-
-    <!-- Sidebar -->
-    <nav class="sidebar d-none d-lg-flex flex-column">
-        <a href="/" class="active"><i class="bi bi-house"></i> Dashboard</a>
-        <a href="/subjects_available"><i class="bi bi-book"></i> Instructor</a>
-        <a href="/my_subjects"><i class="bi bi-person-lines-fill"></i> My Subjects</a>
-        <a href="/profile"><i class="bi bi-person-circle"></i> Profile</a>
-        <a href="#"><i class="bi bi-gear"></i> Settings</a>
-        <a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
-    </nav>
 
     <!-- Main Content -->
     <div class="main-content d-flex justify-content-center align-items-center">
@@ -335,6 +281,7 @@ $this->insert('Errors/Toasts');
     <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
 
 <?php

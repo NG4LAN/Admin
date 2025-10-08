@@ -12,232 +12,14 @@ $this->insert('Errors/Toasts');
     <title>Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+
     <!-- Bootstrap CSS and Icons -->
+    <link rel="stylesheet" href="/css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0d2a4e;
-            /* fallback solid blue */
-            color: #e0f0ff;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-            z-index: 0;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('/img/bg.jpg') no-repeat center center/cover;
-            filter: blur(10px) brightness(0.6);
-            z-index: -1;
-        }
-
-        /* Top Navbar */
-        .navbar-blur {
-            background: rgba(0, 44, 89, 0.85);
-            /* darker blue with opacity */
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(74, 200, 224, 0.15);
-        }
-
-        .navbar-blur .navbar-brand {
-            color: #4ac8e0;
-            font-weight: 600;
-        }
-
-        .navbar-blur .nav-link,
-        .navbar-blur .navbar-text {
-            color: #cde9fb;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            background: rgba(4, 66, 121, 0.75);
-            backdrop-filter: blur(12px);
-            height: 100vh;
-            width: 240px;
-            position: fixed;
-            top: 56px;
-            left: 0;
-            padding-top: 1rem;
-            border-right: 1px solid rgba(74, 200, 224, 0.15);
-            z-index: 1020;
-            display: none;
-            flex-direction: column;
-        }
-
-        .sidebar a {
-            color: #a6d1f7;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .sidebar a:hover,
-        .sidebar a.active {
-            background-color: rgba(74, 200, 224, 0.25);
-            border-left: 4px solid #4ac8e0;
-            padding-left: 16px;
-            color: #d1f0ff;
-        }
-
-        .main-content {
-            margin-left: 240px;
-            padding: 90px 30px 30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (max-width: 991.98px) {
-            .sidebar {
-                display: none !important;
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 90px 15px 20px;
-            }
-        }
-
-        .profile-pic {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #4ac8e0;
-        }
-
-        .card-glass {
-            background: rgba(74, 200, 224, 0.15);
-            border: 1px solid rgba(74, 200, 224, 0.3);
-            backdrop-filter: blur(14px);
-            border-radius: 20px;
-            padding: 20px;
-            color: #e0f0ff;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .card-glass:hover {
-            transform: translateY(-4px);
-        }
-
-        .metric-icon {
-            font-size: 2.8rem;
-            flex-shrink: 0;
-            color: #4ac8e0;
-        }
-
-        .card-title {
-            font-weight: 500;
-            font-size: 1rem;
-            color: #b2d4ec;
-        }
-
-        .card-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        .activity-list li {
-            background: transparent;
-            border-color: rgba(74, 200, 224, 0.25);
-            color: #a7cce5;
-        }
-
-        #mobileSidebar a {
-            color: #a6d1f7;
-            text-decoration: none;
-        }
-
-        a {
-            color: #a6d1f7;
-            text-decoration: none;
-        }
-
-        #mobileSidebar a:hover,
-        #mobileSidebar a:focus {
-            color: #d1f0ff;
-            text-decoration: none;
-        }
-
-        body {
-            background-color: #f8f9fa;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .main-content {
-            min-height: 100vh;
-            margin-left: 240px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .card-glass-form {
-            background: rgba(74, 200, 224, 0.12);
-            border: 1px solid rgba(74, 200, 224, 0.3);
-            backdrop-filter: blur(14px);
-            border-radius: 20px;
-            width: 480px;
-            color: #e0f0ff;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
-        }
-
-        .card-glass-form:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 40px rgba(74, 200, 224, 0.25);
-        }
-
-        .input-glass {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
-        }
-
-        .input-glass:focus {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: #4ac8e0;
-            box-shadow: 0 0 0 0.25rem rgba(74, 200, 224, 0.25);
-            color: #111010ff;
-        }
-
-        .form-label {
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        .btn-info {
-            background-color: #4ac8e0;
-            border: none;
-        }
-
-        .btn-info:hover {
-            background-color: #3ab6d5;
-        }
-
-        .btn-outline-light:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -293,14 +75,63 @@ $this->insert('Errors/Toasts');
     </nav>
 
     <!-- Sidebar (Desktop) -->
-    <nav class="sidebar d-none d-lg-flex flex-column">
-        <a href="/" class="active"><i class="bi bi-house"></i> Dashboard</a>
-        <a href="/subjects_available"><i class="bi bi-book"></i> Instructor</a>
-        <a href="/my_subjects"><i class="bi bi-person-lines-fill"></i> My Subjects</a>
-        <a href="/profile"><i class="bi bi-person-circle"></i> Profile</a>
-        <a href="#"><i class="bi bi-gear"></i> Settings</a>
-        <a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
-    </nav>
+      <nav class="sidebar d-none d-lg-flex flex-column">
+    <li class="nav-item mb-2">
+      <a href="/DashboardView" class="nav-link text-white">
+        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+      </a>
+    </li>
+    <li class="nav-item mb-2">
+      <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#teacherMenu" role="button" aria-expanded="false" aria-controls="teacherMenu">
+        <span><i class="bi bi-person-badge me-2"></i>Faculty</span>
+        <i class="bi bi-caret-down-fill small"></i>
+      </a>
+
+      <!-- Dropdown Items -->
+      <div class="collapse ps-3" id="teacherMenu">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="/AddFacultyView" class="nav-link text-white-50">
+              <i class="bi bi-person-plus me-2"></i> Add Faculty
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/ViewFaculty" class="nav-link text-white-50">
+              <i class="bi bi-people me-2"></i> Manage Faculty
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item mb-2">
+      <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#subjectMenu" role="button" aria-expanded="false" aria-controls="subjectMenu">
+        <span><i class="bi bi-journal-text me-2"></i> Subject</span>
+        <i class="bi bi-caret-down-fill small"></i>
+      </a>
+
+      <div class="collapse ps-3" id="subjectMenu">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="/AddSubjectView" class="nav-link text-white-50">
+              <i class="bi bi-plus-circle me-2"></i> Add Subject
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/ViewSubjects" class="nav-link text-white-50">
+              <i class="bi bi-list-check me-2"></i> Manage Subject
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <!-- Logout -->
+    <li class="nav-item mt-3">
+      <a href="logout.php" class="nav-link text-danger">
+        <i class="bi bi-box-arrow-right me-2"></i> Logout
+      </a>
+    </li>
+  </nav>
 
 
     </div>

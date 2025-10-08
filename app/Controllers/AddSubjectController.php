@@ -14,20 +14,21 @@ class AddSubjectController
         $db = new DBConnection();
         $this->AddSubjectModel = new AddSubjectModel($db);
     }
-    
+
     public function addsubject()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $subject_code = $_POST['subject_code'] ?? '';
             $subject_name = $_POST['subject_name'] ?? '';
+            $year_level = $_POST['year_level'] ?? '';
             $semester = $_POST['semester'] ?? '';
             $credit_units = $_POST['credit_units'] ?? '';
 
-            if (empty($subject_code) || empty($subject_name) || empty($semester) || empty($credit_units)) {
+            if (empty($subject_code) || empty($subject_name)|| empty($year_level) || empty($semester) || empty($credit_units)) {
                 return ["success" => false, "message" => "All fields are required."];
             }
         }
-        $result = $this->AddSubjectModel->addSubject($subject_code, $subject_name, $semester, $credit_units);
+        $result = $this->AddSubjectModel->addSubject($subject_code, $subject_name,$year_level, $semester, $credit_units);
 
         if ($result) {
             return "Subject added successfully.";
@@ -38,16 +39,14 @@ class AddSubjectController
     }
 
 
-// not fixed
+    // not fixed
 
     public function showSubjectForm($id)
     {
         $subjects = $this->AddSubjectModel->getSubjectById($id);
         echo $GLOBALS['templates']->render('UpdateSubjectView', ['subjects' => $subjects]);
-
-
     }
-    
+
     public function readSubject()
     {
         $subjects = $this->AddSubjectModel->getAllSubject();
@@ -63,24 +62,27 @@ class AddSubjectController
     {
         $subject_code = $_POST['subject_code'] ?? '';
         $subject_name = $_POST['subject_name'] ?? '';
+        $year_level = $_POST['year_level'] ?? '';
         $semester = $_POST['semester'] ?? '';
         $credit_units = $_POST['credit_units'] ?? '';
 
-        if (empty($subject_code) || empty($subject_name) || empty($semester) || empty($credit_units)) {
+        if (empty($subject_code) || empty($subject_name) || empty($year_level) || empty($semester) || empty($credit_units)) {
             return ["success" => false, "message" => "All fields are required."];
         }
 
-        $result = $this->AddSubjectModel->updateSubject($id, $subject_code, $subject_name, $semester, $credit_units);
+        $result = $this->AddSubjectModel->updateSubject($id, $subject_code, $subject_name,$year_level, $semester, $credit_units);
 
         if ($result) {
-            return "Subject updated successfully.";
+            header("Location: /ViewSubjects");
+            exit;
         }
 
         return "Error updating subject.";
     }
 
 
-   
+
+
 
 
     // Add your custom controllers below to handle business logic.

@@ -259,46 +259,41 @@ $this->insert('Errors/Toasts');
     </nav>
 
     <main class="main-content">
-        <div class="container">
-            <h2>Manage Subject</h2>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active text-light">Dashboard / Manage Subject</li>
-                </ol>
-            </nav>
+        <h2>Update Subject</h2>
 
-            <div class="table-container mt-4">
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle text-center">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>Subject Code</th>
-                                <th>Subject Name</th>
-                                <th>Semester</th>
-                                <th>Units</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($subjects as $s): ?>
-                                <tr>
-                                    <td><?= $s['id']; ?></td>
-                                    <td><?= htmlspecialchars($s['subject_code']); ?></td>
-                                    <td><?= htmlspecialchars($s['subject_name']); ?></td>
-                                    <td><?= htmlspecialchars($s['semester']); ?></td>
-                                    <td><?= htmlspecialchars($s['credit_units']); ?></td>
-                                    <td><a href="/ViewSubjects/UpdateSubjectView/<?= htmlspecialchars($s['id']) ?>"><button class="btn btn-edit">Edit</button></a></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <form action="/ViewSubjects/UpdateSubjectView/<?= htmlspecialchars($subjects['id']); ?>/Update" method="POST">
+            <label>Subject Code:</label>
+            <input type="text" name="subject_code" value="<?= htmlspecialchars($subjects['subject_code']); ?>" required><br>
 
-            <footer class="mt-4">
-                <p>© 2025 <span>Christ the King College</span>. All rights reserved.</p>
-            </footer>
+            <label>Subject Name:</label>
+            <input type="text" name="subject_name" value="<?= htmlspecialchars($subjects['subject_name']); ?>" required><br>
+
+            <label>Year Level</label>
+            <select name="year_level"required>
+                <option value="1st Year"<?= $subjects['year_level'] === '1st Year' ? 'selected' : ''; ?>>1st Year</option>
+                <option value="2nd Year"<?= $subjects['year_level'] === '2nd Year' ? 'selected' : ''; ?>>2nd Year</option>
+                <option value="3rd Year"<?= $subjects['year_level'] === '3rd Year' ? 'selected' : ''; ?>>3rd Year</option>
+                <option value="4th Year"<?= $subjects['year_level'] === '4th Year' ? 'selected' : ''; ?>>4th Year</option>
+                
+                
+            </select>
+
+
+            <label>Semester:</label>
+            <select name="semester" required>
+                <option value="1st Semester" <?= $subjects['semester'] === '1st Semester' ? 'selected' : ''; ?>>1st Semester</option>
+                <option value="2nd Semester" <?= $subjects['semester'] === '2nd Semester' ? 'selected' : ''; ?>>2nd Semester</option>
+            </select><br>
+
+            <label>Credit Units:</label>
+            <input type="number" name="credit_units" value="<?= htmlspecialchars($subjects['credit_units']); ?>" min="0" step="0.5" required><br>
+
+            <button type="submit">Update Subject</button>
+        </form>
+
+        <footer class="mt-4">
+            <p>© 2025 <span>Christ the King College</span>. All rights reserved.</p>
+        </footer>
         </div>
     </main>
 

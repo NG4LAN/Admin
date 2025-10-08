@@ -16,11 +16,12 @@ class AddSubjectModel
 
 
 
-    public function addSubject($subject_code, $subject_name, $semester, $credit_units)
+    public function addSubject($subject_code, $subject_name, $year_level, $semester, $credit_units)
     {
-        $stmt = $this->db->prepare("INSERT INTO subjects (subject_code, subject_name, semester, credit_units) VALUES (:subject_code, :subject_name, :semester, :credit_units)");
+        $stmt = $this->db->prepare("INSERT INTO subjects (subject_code, subject_name, year_level ,semester, credit_units) VALUES (:subject_code, :subject_name, :year_level, :semester, :credit_units)");
         $stmt->bindParam(':subject_code', $subject_code, PDO::PARAM_STR);
         $stmt->bindParam(':subject_name', $subject_name, PDO::PARAM_STR);
+        $stmt->bindParam(':year_level', $year_level, PDO::PARAM_STR);
         $stmt->bindParam(':semester', $semester, PDO::PARAM_STR);
         $stmt->bindParam(':credit_units', $credit_units, PDO::PARAM_INT);
         return $stmt->execute();
@@ -46,11 +47,12 @@ class AddSubjectModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function updateSubject($id, $subject_code, $subject_name, $semester, $credit_units)
+    public function updateSubject($id, $subject_code, $subject_name, $year_level ,$semester, $credit_units)
     {
-        $stmt = $this->db->prepare("UPDATE subjects SET subject_code = :subject_code, subject_name = :subject_name, semester = :semester, credit_units = :credit_units WHERE id = :id");
+        $stmt = $this->db->prepare("UPDATE subjects SET subject_code = :subject_code, subject_name = :subject_name, year_level = :year_level ,semester = :semester, credit_units = :credit_units WHERE id = :id");
         $stmt->bindParam(':subject_code', $subject_code, PDO::PARAM_STR);
         $stmt->bindParam(':subject_name', $subject_name, PDO::PARAM_STR);
+        $stmt->bindParam(':year_level', $year_level, PDO::PARAM_STR);
         $stmt->bindParam(':semester', $semester, PDO::PARAM_STR);
         $stmt->bindParam(':credit_units', $credit_units, PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
