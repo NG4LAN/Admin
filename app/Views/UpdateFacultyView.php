@@ -25,7 +25,11 @@ $this->insert('Errors/Toasts');
 
         <label>Last Name:</label>
         <input type="text" name="last_name" value="<?= htmlspecialchars($faculty['last_name']); ?>" required><br>
-<!-- 
+
+        <label>Mobile Number</label>
+        <input type="mobile_number" name="mobile_number" value="<?= htmlspecialchars($faculty['mobile_number']); ?>" required><br>
+
+        <!-- 
         <label>Password (leave blank to keep current):</label>
         <input type="password" name="password"><br> -->
 

@@ -19,7 +19,7 @@
     <!-- Top Navigation -->
     <nav class="navbar navbar-expand-lg navbar-blur fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/DashboardView">
                 <i class="bi bi-building"></i>
                 Christ the King College
             </a>

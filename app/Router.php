@@ -21,6 +21,9 @@ class Router
         // Add Faculty routes
         Router::add('/AddFacultyView', fn() => \app\Router::render('AddFacultyView')); // show add faculty page
         Router::add('/AddFacultySubmit', fn() => (new \app\Controllers\AddFacultyController())->addFaculty(), 'POST'); // handle POST submit
+        
+        
+        
         Router::add('/DashboardView', fn() => \app\Router::render('DashboardView')); // show dashboard page
 
 

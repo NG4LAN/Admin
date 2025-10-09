@@ -15,15 +15,16 @@ class AddFacultyModel
     }
 
     // Method to insert a new faculty record
-    public function insertFaculty($firstName, $lastName, $password, $gender, $email, $idNumber)
+    public function insertFaculty($firstName, $lastName, $password, $mobile_number, $gender, $email, $idNumber)
     {
         $stmt = $this->db->prepare(
-            "INSERT INTO faculty (first_name, last_name, password, gender, email, id_number) 
-             VALUES (:first_name, :last_name, :password, :gender, :email, :id_number)"
+            "INSERT INTO faculty (first_name, last_name, password, mobile_number, gender, email, id_number) 
+             VALUES (:first_name, :last_name, :password, :mobile_number,:gender, :email, :id_number)"
         );
         $stmt->bindParam(':first_name', $firstName, PDO::PARAM_STR);
         $stmt->bindParam(':last_name', $lastName, PDO::PARAM_STR);
         $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':mobile_number', $mobile_number, PDO::PARAM_STR);
         $stmt->bindParam(':gender', $gender, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':id_number', $idNumber, PDO::PARAM_STR);
@@ -46,20 +47,21 @@ class AddFacultyModel
         $stmt = $this->db->prepare("SELECT * FROM faculty WHERE id_number = :id_number");
         $stmt->bindParam(':id_number', $id, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);  // Returns the faculty's data as an associative array
+        return $stmt->fetch(PDO::FETCH_ASSOC); 
     }
 
 
 
 
     // Method to update faculty details
-    public function updateFaculty($id, $firstName, $lastName, $password, $gender, $email, $idNumber)
+    public function updateFaculty($id, $firstName, $lastName, $password, $mobile_number, $gender, $email, $idNumber)
     {
         $stmt = $this->db->prepare(
             "UPDATE faculty 
              SET first_name = :first_name, 
                  last_name = :last_name, 
                  password = :password, 
+                 mobile_number = :mobile_number,
                  gender = :gender, 
                  email = :email, 
                  id_number = :id_number 
@@ -69,15 +71,12 @@ class AddFacultyModel
         $stmt->bindParam(':first_name', $firstName, PDO::PARAM_STR);
         $stmt->bindParam(':last_name', $lastName, PDO::PARAM_STR);
         $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':mobile_number', $mobile_number, PDO::PARAM_STR);
         $stmt->bindParam(':gender', $gender, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':id_number', $idNumber, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         return $stmt->execute();
-   
-        
-        
     }
-    
 }

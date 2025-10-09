@@ -18,11 +18,11 @@ $this->insert('Errors/Toasts');
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap + Icons -->
-     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-   
+
 </head>
 
 <body>
@@ -43,11 +43,12 @@ $this->insert('Errors/Toasts');
                     <table class="table table-hover align-middle text-center">
                         <thead>
                             <tr>
-                                <th>F.No</th>
+
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Faculty ID</th>
                                 <th>Mobile Number</th>
+                                <th>Gender</th>
                                 <th>Email</th>
                                 <th>Action</th>
                             </tr>
@@ -56,13 +57,13 @@ $this->insert('Errors/Toasts');
 
                             <?php foreach ($faculties as $faculty): ?>
                                 <tr>
-                                    <td><?= htmlspecialchars($faculty['id']) ?></td>
-                                    <td><?= htmlspecialchars($faculty['id_number']) ?></td>
                                     <td><?= htmlspecialchars($faculty['first_name']) ?></td>
                                     <td><?= htmlspecialchars($faculty['last_name']) ?></td>
+                                    <td><?= htmlspecialchars($faculty['id_number']) ?></td>
+                                    <td><?= htmlspecialchars($faculty['mobile_number']) ?></td> 
                                     <td><?= htmlspecialchars($faculty['gender']) ?></td>
                                     <td><?= htmlspecialchars($faculty['email']) ?></td>
-                                    <td><a href="/ViewFaculty/UpdateFaculty/<?= htmlspecialchars($faculty['id_number']) ?>">asd</a></td>
+                                    <td><a href="/ViewFaculty/UpdateFaculty/<?= htmlspecialchars($faculty['id_number']) ?>">Update</a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

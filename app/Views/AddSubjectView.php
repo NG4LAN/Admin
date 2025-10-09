@@ -264,7 +264,7 @@ $this->insert('Errors/Toasts');
                     </select>
                 </div>
 
-                <!-- ✅ FIXED: Changed name="units" to name="credit_units" -->
+              
                 <div class="mb-3">
                     <label class="form-label">Credit Units</label>
                     <input type="number" name="credit_units" class="form-control" placeholder="e.g. 3">

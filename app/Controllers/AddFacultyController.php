@@ -22,22 +22,25 @@ class AddFacultyController
             $firstName = $_POST['first_name'] ?? '';
             $lastName  = $_POST['last_name'] ?? '';
             $password  = $_POST['password'] ?? '';
+            $mobile_number  = $_POST['mobile_number'] ?? '';
             $gender    = $_POST['gender'] ?? '';
             $email     = $_POST['email'] ?? '';
             $idNumber  = $_POST['id_number'] ?? '';
 
             // Validate required fields
-            if (empty($firstName) || empty($lastName) || empty($password) || empty($gender) || empty($email) || empty($idNumber)) {
-                return ["success" => false, "message" => "All fields are required."];
+            if (empty($firstName) || empty($lastName) || empty($password) || empty($mobile_number) || empty($gender) || empty($email) || empty($idNumber)) {
+                echo "All fields are required.";
+                return;
             }
 
             // Secure password
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             // Insert the faculty into the database
-            $result = $this->AddFacultyModel->insertFaculty($firstName, $lastName, $hashedPassword, $gender, $email, $idNumber);
+            $result = $this->AddFacultyModel->insertFaculty($firstName, $lastName, $hashedPassword, $mobile_number, $gender, $email, $idNumber);
 
             if ($result) {
+                
                 header("Location: /ViewFaculty");
                 exit;
             }
@@ -73,6 +76,7 @@ class AddFacultyController
             $firstName = $_POST['first_name'] ?? '';
             $lastName  = $_POST['last_name'] ?? '';
             $password  = $_POST['password'] ?? '';
+            $mobile_number  = $_POST['mobile_number'] ?? '';
             $gender    = $_POST['gender'] ?? '';
             $email     = $_POST['email'] ?? '';
             $idNumber  = $_POST['id_number'] ?? '';
@@ -88,6 +92,7 @@ class AddFacultyController
                 $firstName,
                 $lastName,
                 $hashedPassword,
+                $mobile_number,
                 $gender,
                 $email,
                 $idNumber
@@ -101,6 +106,4 @@ class AddFacultyController
             echo "Error updating faculty.";
         }
     }
-
-    
 }
