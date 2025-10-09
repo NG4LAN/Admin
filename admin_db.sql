@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2025 at 07:56 AM
+-- Generation Time: Oct 09, 2025 at 09:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -50,10 +50,11 @@ CREATE TABLE `faculty` (
   `id` int(11) NOT NULL,
   `first_name` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
-  `password` varchar(10) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
   `gender` enum('Male','Female') DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
   `id_number` varchar(50) DEFAULT NULL,
+  `mobile_number` varchar(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -61,13 +62,8 @@ CREATE TABLE `faculty` (
 -- Dumping data for table `faculty`
 --
 
-INSERT INTO `faculty` (`id`, `first_name`, `last_name`, `password`, `gender`, `email`, `id_number`, `created_at`) VALUES
-(1, 'Calvin Joshua', 'asdasd', '$2y$10$mv8', 'Male', 'calvinkiunisala07@gmail.com', 'c23-3434', '2025-10-04 08:57:29'),
-(4, 'joshua', 'kiunisala', '$2y$10$LPj', 'Male', 'suzette@gmail.com', 'c23-3436', '2025-10-04 08:58:24'),
-(10, 'janna', 'ocliaman', '$2y$10$oL1', 'Male', 'calvinkiunisala@gmail.com', 'c23-3435', '2025-10-04 09:05:48'),
-(13, 'jerccho', 'asdasd', '$2y$10$pJb', 'Male', 'calvinkiunisala3@gmail', 'c23-3437', '2025-10-04 11:45:00'),
-(14, 'long', 'rams', '$2y$10$gy7', 'Male', 'long@gmail.com', 'c23-0001', '2025-10-04 14:44:05'),
-(15, 'q', 'w', '$2y$10$6FF', 'Male', 'qw@gmail.com', 'c23-0002', '2025-10-04 15:57:22');
+INSERT INTO `faculty` (`id`, `first_name`, `last_name`, `password`, `gender`, `email`, `id_number`, `mobile_number`, `created_at`) VALUES
+(17, 'Calvin Joshua', 'Kiunisala', '$2y$10$Qjv45kThVxraAGnjh1GOoeHdqXy/zPqxgzsD.6Z5jfdWagJaX3hby', 'Male', 'calvinkiunisala@gmaill.com', 'CF-102423', '09123648997', '2025-10-09 06:57:29');
 
 -- --------------------------------------------------------
 
@@ -79,6 +75,7 @@ CREATE TABLE `subjects` (
   `id` int(11) NOT NULL,
   `subject_code` varchar(50) NOT NULL,
   `subject_name` varchar(255) NOT NULL,
+  `year_level` enum('1st Year','2nd Year','3rd Year','4th Year') NOT NULL,
   `semester` enum('1st Semester','2nd Semester') NOT NULL,
   `credit_units` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -87,10 +84,13 @@ CREATE TABLE `subjects` (
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`id`, `subject_code`, `subject_name`, `semester`, `credit_units`) VALUES
-(1, 'it101', 'math', '1st Semester', 0),
-(3, 'it102', 'english', '1st Semester', 0),
-(4, 'it202', 'Math1', '2nd Semester', 3);
+INSERT INTO `subjects` (`id`, `subject_code`, `subject_name`, `year_level`, `semester`, `credit_units`) VALUES
+(1, 'it101', 'math', '1st Year', '1st Semester', 0),
+(3, 'it102', 'english', '1st Year', '1st Semester', 0),
+(4, 'it202', 'Math1', '1st Year', '2nd Semester', 3),
+(5, 'Programming 1', 'IT 102', '1st Year', '1st Semester', 20),
+(7, 'Programming 3', 'IT 103', '1st Year', '2nd Semester', 23),
+(11, 'Programming 2', 'IT 103', '1st Year', '2nd Semester', 23);
 
 --
 -- Indexes for dumped tables
@@ -132,13 +132,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
