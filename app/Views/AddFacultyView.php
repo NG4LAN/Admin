@@ -17,72 +17,57 @@ $this->insert('Errors/Toasts');
     <link rel="stylesheet" href="/css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-    
 
-    
+
+
 </head>
 
 <body>
 
- 
-
-    </div>
-
     <!-- Main Content -->
-    <div class="header">
-        <h4>Admin</h4>
-    </div>
-
-    <div class="main-content d-flex justify-content-center align-items-center">
-        <div class="card-glass-form p-5 shadow-lg">
-            <h3 class="mb-4 text-center fw-bold text-white">Add Faculty</h3>
+    <div class="main-content d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card-glass-form p-5 mt-5">
+            <h4 class="mb-4 text-center fw-bold text-light">Add Faculty</h4>
 
             <form action="/AddFacultySubmit" method="POST">
                 <div class="mb-3">
-                    <label class="form-label text-light">First Name:</label>
-                    <input type="text" name="first_name" class="form-control input-glass" required>
+                    <label class="form-label">First Name</label>
+                    <input type="text" name="first_name" class="form-control input-glass" placeholder="Enter First Name" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label text-light">Last Name</label>
-                    <input type="text" name="last_name" class="form-control input-glass" required>
+                    <label class="form-label">Last Name</label>
+                    <input type="text" name="last_name" class="form-control input-glass" placeholder="Enter Last Name" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label text-light">Password</label>
-                    <input type="password" name="password" class="form-control input-glass" required>
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control input-glass" placeholder="Enter password" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label text-light">Email</label>
-                    <input type="email" name="email" class="form-control input-glass" required>
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control input-glass" placeholder="wowname@email.com" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label text-light">Mobile Number</label>
-                    <input type="text" name="mobile_number" class="form-control input-glass" required>
+                    <label class="form-label">Mobile Number</label>
+                    <input type="text" name="mobile_number" class="form-control input-glass" placeholder="09123456789" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label text-light">Gender</label>
+                    <label class="form-label">Gender</label>
                     <select name="gender" class="form-select input-glass" required>
-                        
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option>Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label text-light">ID Number</label>
-                    <input type="text" name="id_number" class="form-control input-glass" placeholder="c25-4033" required>
+                    <label class="form-label">ID Number</label>
+                    <input type="text" name="id_number" class="form-control input-glass" placeholder="C25-4033" required>
                 </div>
-
-                <!-- Optional Photo Upload
-      <div class="mb-3">
-        <label class="form-label text-light">Upload Faculty Photo (150x150)</label>
-        <input type="file" name="photo" class="form-control input-glass">
-      </div>
-      -->
 
                 <div class="text-center mt-4">
                     <button type="submit" name="save" class="btn btn-info text-white px-4 me-2">Save</button>
@@ -91,6 +76,8 @@ $this->insert('Errors/Toasts');
             </form>
         </div>
     </div>
+
+
 
 
     <!-- Bootstrap Bundle -->

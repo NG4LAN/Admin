@@ -15,16 +15,16 @@ $this->insert('Errors/Toasts');
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap + Icons -->
-      <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-   
+
 </head>
 
 <body>
 
-    
+
 
     <main class="main-content">
         <div class="container">
@@ -40,7 +40,7 @@ $this->insert('Errors/Toasts');
                     <table class="table table-hover align-middle text-center">
                         <thead>
                             <tr>
-                
+
                                 <th>Subject Code</th>
                                 <th>Subject Name</th>
                                 <th>Year Level</th>
@@ -52,23 +52,30 @@ $this->insert('Errors/Toasts');
                         <tbody>
                             <?php foreach ($subjects as $s): ?>
                                 <tr>
-                                    
+
                                     <td><?= htmlspecialchars($s['subject_code']); ?></td>
                                     <td><?= htmlspecialchars($s['subject_name']); ?></td>
                                     <td><?= htmlspecialchars($s['year_level']); ?></td>
                                     <td><?= htmlspecialchars($s['semester']); ?></td>
                                     <td><?= htmlspecialchars($s['credit_units']); ?></td>
-                                    <td><a href="/ViewSubjects/UpdateSubjectView/<?= htmlspecialchars($s['id']) ?>"><button class="btn btn-edit">Edit</button></a></td>
+                                    <td>
+                                        <a href="/ViewSubjects/UpdateSubjectView/<?= htmlspecialchars($s['id']) ?>" class="btn-edit">
+                                            <i class="bi bi-pencil-square me-1"></i>Update
+                                        </a>
+                                    </td>
+
+
+
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
             </div>
-
             <footer class="mt-4">
                 <p>© 2025 <span>Christ the King College</span>. All rights reserved.</p>
             </footer>
+
         </div>
     </main>
 

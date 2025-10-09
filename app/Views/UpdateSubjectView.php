@@ -15,171 +15,11 @@ $this->insert('Errors/Toasts');
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap + Icons -->
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-            color: #f0faff;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: url('bg.jpg') center/cover no-repeat;
-            filter: blur(8px) brightness(0.7);
-            z-index: -1;
-        }
-
-        .navbar-blur {
-            background: rgba(0, 25, 51, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar-brand {
-            color: #4ac8e0 !important;
-            font-weight: 600;
-        }
-
-        .navbar-text {
-            color: #aee2ff !important;
-            font-weight: 500;
-            text-shadow: 0 0 6px rgba(174, 226, 255, 0.6);
-        }
-
-        .sidebar {
-            background: rgba(0, 32, 64, 0.8);
-            backdrop-filter: blur(12px);
-            height: 100vh;
-            width: 240px;
-            position: fixed;
-            top: 56px;
-            left: 0;
-            padding-top: 1rem;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .sidebar a {
-            color: #aee2ff;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar a:hover,
-        .sidebar a.active {
-            background-color: rgba(74, 200, 224, 0.2);
-            border-left: 4px solid #4ac8e0;
-            color: #fff;
-        }
-
-        .main-content {
-            margin-left: 240px;
-            padding: 80px 30px 40px;
-        }
-
-        h2 {
-            font-weight: 700;
-            font-size: 2rem;
-            text-align: center;
-            background: linear-gradient(90deg, #4ac8e0, #a8eb12);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-
-        .breadcrumb {
-            justify-content: center;
-            background: none;
-            color: #aad9f7;
-        }
-
-        .table-container {
-            background: rgba(255, 255, 255, 0.02);
-            /* faint frost */
-            border: 1px solid rgba(74, 200, 224, 0.3);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 0 25px rgba(74, 200, 224, 0.2);
-            transition: 0.3s;
-        }
-
-        .table {
-            background-color: transparent !important;
-        }
-
-
-        /* Make all table cells transparent */
-        .table th,
-        .table td {
-            background-color: transparent !important;
-            color: #ffffff !important;
-        }
-
-        /* Remove white border lines */
-        .table-bordered th,
-        .table-bordered td {
-            border-color: rgba(255, 255, 255, 0.1) !important;
-        }
-
-        /* Add a soft glowing divider line between rows */
-        .table tbody tr {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        /* Hover effect for better visibility */
-        .table tbody tr:hover {
-            background: rgba(74, 200, 224, 0.08) !important;
-        }
-
-        .btn-edit {
-            background: linear-gradient(90deg, #00c292, #00bf72);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            padding: 6px 14px;
-            transition: 0.3s;
-        }
-
-        .btn-edit:hover {
-            transform: scale(1.05);
-            background: linear-gradient(90deg, #00bf72, #4ac8e0);
-        }
-
-        footer {
-            text-align: center;
-            color: #aad9f7;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-
-        footer span {
-            color: #4ac8e0;
-            font-weight: 600;
-        }
-
-        @media (max-width: 992px) {
-            .sidebar {
-                display: none;
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding-top: 90px;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -217,12 +57,12 @@ $this->insert('Errors/Toasts');
             <div class="collapse ps-3" id="facultyMenu">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="addFaculty.php" class="nav-link text-white-50">
+                        <a href="AddFacultyView.php" class="nav-link text-white-50">
                             <i class="bi bi-person-plus me-2"></i> Add Faculty
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="Manage_Faculty.php" class="nav-link text-white-50">
+                        <a href="ViewFaculty.php" class="nav-link text-white-50">
                             <i class="bi bi-people me-2"></i> Manage Faculty
                         </a>
                     </li>
@@ -258,45 +98,60 @@ $this->insert('Errors/Toasts');
         </li>
     </nav>
 
-    <main class="main-content">
-        <h2>Update Subject</h2>
+    <main class="main-content d-flex justify-content-center align-items-center vh-100">
+        <div class="card-glass-form p-5 mt-5">
+            <h3 class="mb-4 text-center fw-bold text-light">Update Subject</h3>
 
-        <form action="/ViewSubjects/UpdateSubjectView/<?= htmlspecialchars($subjects['id']); ?>/Update" method="POST">
-            <label>Subject Code:</label>
-            <input type="text" name="subject_code" value="<?= htmlspecialchars($subjects['subject_code']); ?>" required><br>
+            <form action="/ViewSubjects/UpdateSubjectView/<?= htmlspecialchars($subjects['id']); ?>/Update" method="POST">
 
-            <label>Subject Name:</label>
-            <input type="text" name="subject_name" value="<?= htmlspecialchars($subjects['subject_name']); ?>" required><br>
+                <div class="mb-3">
+                    <label class="form-label text-light">Subject Code</label>
+                    <input type="text" name="subject_code" class="form-control input-glass"
+                        value="<?= htmlspecialchars($subjects['subject_code']); ?>" required>
+                </div>
 
-            <label>Year Level</label>
-            <select name="year_level"required>
-                <option value="1st Year"<?= $subjects['year_level'] === '1st Year' ? 'selected' : ''; ?>>1st Year</option>
-                <option value="2nd Year"<?= $subjects['year_level'] === '2nd Year' ? 'selected' : ''; ?>>2nd Year</option>
-                <option value="3rd Year"<?= $subjects['year_level'] === '3rd Year' ? 'selected' : ''; ?>>3rd Year</option>
-                <option value="4th Year"<?= $subjects['year_level'] === '4th Year' ? 'selected' : ''; ?>>4th Year</option>
-                
-                
-            </select>
+                <div class="mb-3">
+                    <label class="form-label text-light">Subject Name</label>
+                    <input type="text" name="subject_name" class="form-control input-glass"
+                        value="<?= htmlspecialchars($subjects['subject_name']); ?>" required>
+                </div>
 
+                <div class="mb-3">
+                    <label class="form-label text-light">Year Level</label>
+                    <select name="year_level" class="form-select input-glass" required>
+                        <option value="1st Year" <?= $subjects['year_level'] === '1st Year' ? 'selected' : ''; ?>>1st Year</option>
+                        <option value="2nd Year" <?= $subjects['year_level'] === '2nd Year' ? 'selected' : ''; ?>>2nd Year</option>
+                        <option value="3rd Year" <?= $subjects['year_level'] === '3rd Year' ? 'selected' : ''; ?>>3rd Year</option>
+                        <option value="4th Year" <?= $subjects['year_level'] === '4th Year' ? 'selected' : ''; ?>>4th Year</option>
+                    </select>
+                </div>
 
-            <label>Semester:</label>
-            <select name="semester" required>
-                <option value="1st Semester" <?= $subjects['semester'] === '1st Semester' ? 'selected' : ''; ?>>1st Semester</option>
-                <option value="2nd Semester" <?= $subjects['semester'] === '2nd Semester' ? 'selected' : ''; ?>>2nd Semester</option>
-            </select><br>
+                <div class="mb-3">
+                    <label class="form-label text-light">Semester</label>
+                    <select name="semester" class="form-select input-glass" required>
+                        <option value="1st Semester" <?= $subjects['semester'] === '1st Semester' ? 'selected' : ''; ?>>1st Semester</option>
+                        <option value="2nd Semester" <?= $subjects['semester'] === '2nd Semester' ? 'selected' : ''; ?>>2nd Semester</option>
+                    </select>
+                </div>
 
-            <label>Credit Units:</label>
-            <input type="number" name="credit_units" value="<?= htmlspecialchars($subjects['credit_units']); ?>" min="0" step="0.5" required><br>
+                <div class="mb-3">
+                    <label class="form-label text-light">Credit Units</label>
+                    <input type="number" name="credit_units" class="form-control input-glass"
+                        value="<?= htmlspecialchars($subjects['credit_units']); ?>" min="0" step="0.5" required>
+                </div>
 
-            <button type="submit">Update Subject</button>
-        </form>
-
-        <footer class="mt-4">
-            <p>© 2025 <span>Christ the King College</span>. All rights reserved.</p>
-        </footer>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-info text-white px-4 me-2">
+                        <i class="bi bi-arrow-repeat me-1"></i> Update
+                    </button>
+                    <a href="/ViewSubjects" class="btn btn-outline-light px-4">Cancel</a>
+                </div>
+            </form>
         </div>
-    </main>
 
+
+    </main>
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

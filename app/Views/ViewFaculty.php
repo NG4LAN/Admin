@@ -60,10 +60,16 @@ $this->insert('Errors/Toasts');
                                     <td><?= htmlspecialchars($faculty['first_name']) ?></td>
                                     <td><?= htmlspecialchars($faculty['last_name']) ?></td>
                                     <td><?= htmlspecialchars($faculty['id_number']) ?></td>
-                                    <td><?= htmlspecialchars($faculty['mobile_number']) ?></td> 
+                                    <td><?= htmlspecialchars($faculty['mobile_number']) ?></td>
                                     <td><?= htmlspecialchars($faculty['gender']) ?></td>
                                     <td><?= htmlspecialchars($faculty['email']) ?></td>
-                                    <td><a href="/ViewFaculty/UpdateFaculty/<?= htmlspecialchars($faculty['id_number']) ?>">Update</a></td>
+                                    <td>
+                                        <a href="/ViewFaculty/UpdateFaculty/<?= htmlspecialchars($faculty['id_number']) ?>"
+                                            class="btn-update text-decoration-none">
+                                            <i class="bi bi-pencil-square me-1"></i> Update
+                                        </a>
+                                    </td>
+
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
