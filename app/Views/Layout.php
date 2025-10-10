@@ -66,21 +66,28 @@
         </div>
     </nav>
 
+   
     <!-- Sidebar (Desktop) -->
-    <nav class="sidebar d-none d-lg-flex flex-column">
+    <nav class="sidebar d-none d-lg-flex flex-column" id="sidebarAccordion">
         <li class="nav-item mb-2">
             <a href="/DashboardView" class="nav-link text-white">
                 <i class="bi bi-speedometer2 me-2"></i> Dashboard
             </a>
         </li>
+
+        <!-- Faculty Dropdown -->
         <li class="nav-item mb-2">
-            <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#teacherMenu" role="button" aria-expanded="false" aria-controls="teacherMenu">
+            <a class="nav-link text-white d-flex justify-content-between align-items-center"
+                data-bs-toggle="collapse"
+                href="#teacherMenu"
+                role="button"
+                aria-expanded="false"
+                aria-controls="teacherMenu">
                 <span><i class="bi bi-person-badge me-2"></i>Faculty</span>
                 <i class="bi bi-caret-down-fill small"></i>
             </a>
 
-            <!-- Dropdown Items -->
-            <div class="collapse ps-3" id="teacherMenu">
+            <div class="collapse ps-3" id="teacherMenu" data-bs-parent="#sidebarAccordion">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a href="/AddFacultyView" class="nav-link text-white-50">
@@ -95,13 +102,21 @@
                 </ul>
             </div>
         </li>
+
+        <!-- Subject Dropdown -->
         <li class="nav-item mb-2">
-            <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#subjectMenu" role="button" aria-expanded="false" aria-controls="subjectMenu">
+            <a class="nav-link text-white d-flex justify-content-between align-items-center"
+                data-bs-toggle="collapse"
+                href="#subjectMenu"
+                role="button"
+                aria-expanded="false"
+                aria-controls="subjectMenu">
                 <span><i class="bi bi-journal-text me-2"></i> Subject</span>
                 <i class="bi bi-caret-down-fill small"></i>
             </a>
+           
 
-            <div class="collapse ps-3" id="subjectMenu">
+            <div class="collapse ps-3" id="subjectMenu" data-bs-parent="#sidebarAccordion">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a href="/AddSubjectView" class="nav-link text-white-50">
@@ -117,6 +132,13 @@
             </div>
         </li>
 
+        <!-- Subject Allocation -->
+        <li class="nav-item mb-2">
+            <a href="/SubjectAllocationView" class="nav-link text-white">
+                <i class="bi bi-check2-square me-2"></i> Subject Allocation
+            </a>
+        </li>
+
         <!-- Logout -->
         <li class="nav-item mt-3">
             <a href="logout.php" class="nav-link text-danger">
@@ -124,6 +146,8 @@
             </a>
         </li>
     </nav>
+
+
 
 
 

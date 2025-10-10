@@ -303,7 +303,8 @@ p.text-light {
 /* Main content */
 .main-content {
     margin-left: 240px;
-    padding: 130px 30px 100px; /* ⬅ increased bottom padding to prevent footer overlap */
+    padding: 130px 30px 100px;
+    /* ⬅ increased bottom padding to prevent footer overlap */
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -699,3 +700,7 @@ body {
     font-size: 0.9rem;
     vertical-align: middle;
 }
+
+
+
+
