@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2025 at 09:04 AM
+-- Generation Time: Oct 11, 2025 at 02:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,7 +63,8 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`id`, `first_name`, `last_name`, `password`, `gender`, `email`, `id_number`, `mobile_number`, `created_at`) VALUES
-(17, 'Calvin Joshua', 'Kiunisala', '$2y$10$Qjv45kThVxraAGnjh1GOoeHdqXy/zPqxgzsD.6Z5jfdWagJaX3hby', 'Male', 'calvinkiunisala@gmaill.com', 'CF-102423', '09123648997', '2025-10-09 06:57:29');
+(17, 'Calvin Joshua', 'Kiunisala', '$2y$10$Qjv45kThVxraAGnjh1GOoeHdqXy/zPqxgzsD.6Z5jfdWagJaX3hby', 'Male', 'calvinkiunisala@gmaill.com', 'CF-102423', '09123648997', '2025-10-09 06:57:29'),
+(20, 'Lordwen ', 'Ramoso', '$2y$10$LvaW2mCSGtizbIqevy/aZ.8AKcMPnWg/qgcn2qDSRFfUxcl9e/anq', 'Male', 'Lordwen@gmail.com', 'CF-102421', '09555260429', '2025-10-11 11:57:29');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,24 @@ INSERT INTO `subjects` (`id`, `subject_code`, `subject_name`, `year_level`, `sem
 (4, 'it202', 'Math1', '1st Year', '2nd Semester', 3),
 (5, 'Programming 1', 'IT 102', '1st Year', '1st Semester', 20),
 (7, 'Programming 3', 'IT 103', '1st Year', '2nd Semester', 23),
-(11, 'Programming 2', 'IT 103', '1st Year', '2nd Semester', 23);
+(11, 'Programming 2', 'IT 103', '1st Year', '2nd Semester', 23),
+(12, 'it105', 'math', '1st Year', '2nd Semester', 2),
+(13, 'it201', 'english2', '2nd Year', '1st Semester', 123),
+(14, 'it1051', 'Programming', '2nd Year', '1st Semester', 33);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject_allocations`
+--
+
+CREATE TABLE `subject_allocations` (
+  `id` int(11) NOT NULL,
+  `faculty_id` int(11) DEFAULT NULL,
+  `subject_id` int(11) DEFAULT NULL,
+  `status` enum('Pending','Approved','Rejected') DEFAULT 'Pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -119,6 +137,14 @@ ALTER TABLE `subjects`
   ADD UNIQUE KEY `subject_code` (`subject_code`);
 
 --
+-- Indexes for table `subject_allocations`
+--
+ALTER TABLE `subject_allocations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `faculty_id` (`faculty_id`),
+  ADD KEY `subject_id` (`subject_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -132,13 +158,30 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `subject_allocations`
+--
+ALTER TABLE `subject_allocations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `subject_allocations`
+--
+ALTER TABLE `subject_allocations`
+  ADD CONSTRAINT `subject_allocations_ibfk_1` FOREIGN KEY (`faculty_id`) REFERENCES `faculty` (`id`),
+  ADD CONSTRAINT `subject_allocations_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
