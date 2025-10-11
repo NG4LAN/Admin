@@ -24,16 +24,16 @@ class AddSubjectController
             $semester = $_POST['semester'] ?? '';
             $credit_units = $_POST['credit_units'] ?? '';
 
-            if (empty($subject_code) || empty($subject_name)|| empty($year_level) || empty($semester) || empty($credit_units)) {
+            if (empty($subject_code) || empty($subject_name) || empty($year_level) || empty($semester) || empty($credit_units)) {
                 return ["success" => false, "message" => "All fields are required."];
             }
         }
-        $result = $this->AddSubjectModel->addSubject($subject_code, $subject_name,$year_level, $semester, $credit_units);
+        $result = $this->AddSubjectModel->addSubject($subject_code, $subject_name, $year_level, $semester, $credit_units);
 
         if ($result) {
-            return "Subject added successfully.";
-            // header("Location: /AddSubjectView");
 
+            header("Location: /ViewSubjects");
+            exit;
         }
         return "Error adding subject.";
     }
@@ -70,7 +70,7 @@ class AddSubjectController
             return ["success" => false, "message" => "All fields are required."];
         }
 
-        $result = $this->AddSubjectModel->updateSubject($id, $subject_code, $subject_name,$year_level, $semester, $credit_units);
+        $result = $this->AddSubjectModel->updateSubject($id, $subject_code, $subject_name, $year_level, $semester, $credit_units);
 
         if ($result) {
             header("Location: /ViewSubjects");
@@ -79,6 +79,18 @@ class AddSubjectController
 
         return "Error updating subject.";
     }
+
+    public function submitForVerification()
+    {
+        $subjectId = $_GET['id'] ?? null;
+        if ($subjectId) {
+            $this->AddSubjectModel->addPendingSubject($subjectId);
+        }
+
+        header('Location: /ViewSubjects');
+        exit;
+    }
+
 
 
 

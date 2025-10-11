@@ -1,3 +1,12 @@
+<?php
+$this->layout('Layout', ['mainContent' => $this->fetch('Layout')]);
+$this->start('mainContent');
+$this->insert('Errors/Toasts');
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -190,82 +199,7 @@
 </head>
 
 <body>
-    <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-blur fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-building"></i> Christ the King College
-            </a>
-            <div class="ms-auto d-flex align-items-center gap-3">
-                <span class="navbar-text">admin@ckcgingoog.edu.ph</span>
-                <i class="bi bi-bell fs-5 text-light"></i>
-                <img src="/img/juswa.jpg" class="rounded-circle" alt="Admin" width="35" height="35" />
-            </div>
-        </div>
-    </nav>
-
-    <!-- Sidebar (Desktop) -->
-    <nav class="sidebar d-none d-lg-flex flex-column">
-        <li class="nav-item mb-2">
-            <a href="/DashboardView" class="nav-link text-white">
-                <i class="bi bi-speedometer2 me-2"></i> Dashboard
-            </a>
-        </li>
-        <li class="nav-item mb-2">
-            <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#teacherMenu" role="button" aria-expanded="false" aria-controls="teacherMenu">
-                <span><i class="bi bi-person-badge me-2"></i>Faculty</span>
-                <i class="bi bi-caret-down-fill small"></i>
-            </a>
-
-            <!-- Dropdown Items -->
-            <div class="collapse ps-3" id="teacherMenu">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a href="/AddFacultyView" class="nav-link text-white-50">
-                            <i class="bi bi-person-plus me-2"></i> Add Faculty
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/ViewFaculty" class="nav-link text-white-50">
-                            <i class="bi bi-people me-2"></i> Manage Faculty
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item mb-2">
-            <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#subjectMenu" role="button" aria-expanded="false" aria-controls="subjectMenu">
-                <span><i class="bi bi-journal-text me-2"></i> Subject</span>
-                <i class="bi bi-caret-down-fill small"></i>
-            </a>
-
-            <div class="collapse ps-3" id="subjectMenu">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a href="/AddSubjectView" class="nav-link text-white-50">
-                            <i class="bi bi-plus-circle me-2"></i> Add Subject
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/ViewSubjects" class="nav-link text-white-50">
-                            <i class="bi bi-list-check me-2"></i> Manage Subject
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item mb-2">
-            <a href="/SubjectAllocationView" class="nav-link text-white">
-                <i class="bi bi-check2-square me-2"></i> Subject Allocation
-            </a>
-        </li>
-        <!-- Logout -->
-        <li class="nav-item mt-3">
-            <a href="logout.php" class="nav-link text-danger">
-                <i class="bi bi-box-arrow-right me-2"></i> Logout
-            </a>
-        </li>
-    </nav>
+    
 
     <!-- Main Content -->
     <main class="main-content">
@@ -308,11 +242,7 @@
                             </tr>
                             <tr>
 
-                                <td>Prof. John Smith</td>
-                                <td>IT302</td>
-                                <td>Networking Fundamentals</td>
-                                <td>3rd Year</td>
-                                <td>2nd Semester</td>
+                               
 
                                 <td>
                                     <button class="btn btn-sm btn-success">Approve</button>
@@ -342,11 +272,7 @@
                         <tbody>
                             <tr>
 
-                                <td>Prof. Juan Dela Cruz</td>
-                                <td>CS101</td>
-                                <td>Computer Programming 1</td>
-                                <td>1st Year</td>
-                                <td>1st Semester</td>
+                              
                                 <td><span class="badge bg-success">Approved</span></td>
 
                             </tr>
@@ -365,3 +291,7 @@
 </body>
 
 </html>
+
+<?php
+$this->stop();
+?>

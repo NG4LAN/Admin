@@ -37,7 +37,7 @@ class AddSubjectModel
 
 
 
-        // not fixed
+    // not fixed
 
     public function getSubjectById($id)
     {
@@ -47,7 +47,7 @@ class AddSubjectModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function updateSubject($id, $subject_code, $subject_name, $year_level ,$semester, $credit_units)
+    public function updateSubject($id, $subject_code, $subject_name, $year_level, $semester, $credit_units)
     {
         $stmt = $this->db->prepare("UPDATE subjects SET subject_code = :subject_code, subject_name = :subject_name, year_level = :year_level ,semester = :semester, credit_units = :credit_units WHERE id = :id");
         $stmt->bindParam(':subject_code', $subject_code, PDO::PARAM_STR);
@@ -58,6 +58,10 @@ class AddSubjectModel
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
+
+
+    
+
 
 
 

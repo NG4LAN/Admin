@@ -701,6 +701,107 @@ body {
     vertical-align: middle;
 }
 
+/* subject verification */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    color: #e8f7ff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
 
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/img/bg.jpg') no-repeat center center/cover;
+    filter: blur(10px) brightness(0.6);
+    z-index: -1;
+}
 
+h4,
+h5 {
+    color: #7de8ff;
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
 
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(94, 226, 255, 0.3);
+    backdrop-filter: blur(15px);
+    color: #fff;
+    box-shadow: 0 0 25px rgba(94, 226, 255, 0.15);
+}
+
+.card-header {
+    background: linear-gradient(90deg, #004d7a, #008793);
+    border-bottom: none;
+}
+
+.table {
+    background-color: transparent !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #fff !important;
+}
+
+.table th,
+.table td {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #eafaff !important;
+    backdrop-filter: blur(10px);
+}
+
+.table thead th {
+    background: rgba(94, 226, 255, 0.2) !important;
+    border-bottom: 2px solid rgba(94, 226, 255, 0.4) !important;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.table tbody tr:hover {
+    background: rgba(94, 226, 255, 0.1) !important;
+    transition: 0.3s;
+}
+
+.btn-success,
+.btn-danger {
+    border: none;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.btn-success {
+    background: linear-gradient(90deg, #00bf72, #00e58c);
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, #ff4b4b, #ff6b6b);
+}
+
+.btn-success:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 150, 0.5);
+}
+
+.btn-danger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 75, 75, 0.5);
+}
+
+footer {
+    text-align: center;
+    color: #c2ecff;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+footer span {
+    color: #5ee2ff;
+    font-weight: 600;
+}

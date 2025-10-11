@@ -5,6 +5,7 @@ namespace app;
 use app\Controllers\AddFacultyController;
 use app\Controllers\LoginController;
 use app\Controllers\AddSubjectController;
+use app\Controllers\SubjectVerificationController;
 
 class Router
 {
@@ -25,13 +26,20 @@ class Router
 
 
         Router::add('/DashboardView', fn() => \app\Router::render('DashboardView')); // show dashboard page
+        Router::add('/DashboardView', fn() => (new \app\Controllers\AddFacultyController())->getcount()); // show dashboard page
 
-        
+
 
         // Router::add('/AddSubjectView', fn() => (new \app\Controllers\AddSubjectController())->showSubjectForm());
         Router::add('/AddSubjectView', fn() => \app\Router::render('AddSubjectView'));
         Router::add('/AddSubjectSubmit', fn() => (new \app\Controllers\AddSubjectController())->addSubject(), 'POST');
         Router::add('/ViewFaculty', fn() => (new \app\Controllers\AddFacultyController())->readfaculty());
+
+        
+        Router::add('/SubjectVerificationView', fn() => (new \app\Controllers\SubjectVerificationController())->showPage());
+        Router::add('/subject-verification/action', fn() => (new \app\Controllers\SubjectVerificationController())->handleAction(), 'POST');
+        Router::add('/subject-verification/submit', fn() => (new \app\Controllers\SubjectVerificationController())->submitForVerification(), 'POST');
+
 
 
 
@@ -40,7 +48,7 @@ class Router
         Router::add('/ViewSubjects', fn() => (new \app\Controllers\AddSubjectController())->readSubject());
         Router::add('/ViewSubjects/UpdateSubjectView/{id}', fn($data) => (new \app\Controllers\AddSubjectController())->showSubjectForm($data['id']), 'GET');
         Router::add('/ViewSubjects/UpdateSubjectView/{id}/Update', fn($data) => (new \app\Controllers\AddSubjectController())->updateSubject($data['id']), 'POST');
-        Router::add('/SubjectAllocationView', fn() => \app\Router::render('SubjectAllocationView'));
+        
 
 
 

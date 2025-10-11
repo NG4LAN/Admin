@@ -62,6 +62,14 @@ $this->insert('Errors/Toasts');
                                         <a href="/ViewSubjects/UpdateSubjectView/<?= htmlspecialchars($s['id']) ?>" class="btn-edit">
                                             <i class="bi bi-pencil-square me-1"></i>Update
                                         </a>
+                                        <!-- <form method="POST" action="/subject-verification/submit" class="mb-3">
+                                            <div class="input-group w-50 mx-auto">
+                                                <input type="number" name="subject_id" class="form-control" placeholder="Enter Subject ID to test" required>
+                                                <input type="hidden" name="faculty_id" value="17">
+                                                <button class="btn btn-primary">Add Pending Subject</button>
+                                            </div>
+                                        </form> -->
+
                                     </td>
 
 

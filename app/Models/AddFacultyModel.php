@@ -79,4 +79,19 @@ class AddFacultyModel
 
         return $stmt->execute();
     }
+
+
+    public function getTotalFaculty()
+    {
+        $stmt = $this->db->query("SELECT COUNT(*) as total FROM faculty");
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+
+    public function getTotalSubjects()
+    {
+        $stmt = $this->db->query("SELECT COUNT(*) as total FROM subjects");
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
 }

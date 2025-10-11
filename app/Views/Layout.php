@@ -134,7 +134,7 @@
 
         <!-- Subject Allocation -->
         <li class="nav-item mb-2">
-            <a href="/SubjectAllocationView" class="nav-link text-white">
+            <a href="/SubjectVerificationView" class="nav-link text-white">
                 <i class="bi bi-check2-square me-2"></i> Subject Allocation
             </a>
         </li>

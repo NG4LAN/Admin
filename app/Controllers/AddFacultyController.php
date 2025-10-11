@@ -27,6 +27,8 @@ class AddFacultyController
             $email     = $_POST['email'] ?? '';
             $idNumber  = $_POST['id_number'] ?? '';
 
+
+
             // Validate required fields
             if (empty($firstName) || empty($lastName) || empty($password) || empty($mobile_number) || empty($gender) || empty($email) || empty($idNumber)) {
                 echo "All fields are required.";
@@ -47,6 +49,8 @@ class AddFacultyController
 
             echo "Error adding faculty.";
         }
+        
+       
     }
 
     // Display list of all faculties
@@ -105,5 +109,15 @@ class AddFacultyController
 
             echo "Error updating faculty.";
         }
+    }
+
+
+
+    public function getcount()
+    {
+        $totalFaculty = $this->AddFacultyModel->getTotalFaculty();
+        $totalSubjects = $this->AddFacultyModel->getTotalSubjects();
+
+        echo $GLOBALS['templates']->render('/DashboardView', ['totalFaculty' => $totalFaculty, 'totalSubjects' => $totalSubjects]);
     }
 }

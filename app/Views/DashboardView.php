@@ -43,8 +43,8 @@ $this->insert('Errors/Toasts');
             <div class="card-glass hover-card">
               <i class="bi bi-person-badge metric-icon"></i>
               <div>
-                <div class="card-title">Total Instructors</div>
-                <div class="card-value">12</div>
+              <p>Total Faculty: <?= $totalFaculty ?></p>
+                <div class="card-value"></div>
               </div>
             </div>
           </a>
@@ -56,8 +56,8 @@ $this->insert('Errors/Toasts');
             <div class="card-glass hover-card">
               <i class="bi bi-journal-text metric-icon"></i>
               <div>
-                <div class="card-title">Total Subjects</div>
-                <div class="card-value">18</div>
+                <p>Total Subjects: <?= $totalSubjects ?></p>
+                <div class="card-value"></div>
               </div>
             </div>
           </a>
